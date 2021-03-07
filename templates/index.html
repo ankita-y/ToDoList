@@ -65,7 +65,6 @@
           {% csrf_token %}
           <p>{{ form.title }}</p>
           <p>{{ form.desc }} </p>
-          <p>{{ form.created }}</p>
           <p><input type="submit" name="Add to List" class="btn btn-primary"></p>             
         </form>
       </div> 
@@ -77,6 +76,7 @@
             <div class="card-body">
               <h6 class="card-title">{{list.title}}</h6>
               <p class="card-text">{{list.desc}}</p>
+              <p class="card-text"><small class="text-muted">{{list.created}}</small></p>
               <a href="{% url 'update' list.id %}" class="btn btn-primary">Edit</a>
               <!-- <a href="{% url 'delete' list.id %}" class="btn btn-primary">Delete</a> -->
               <a href="delete/{{list.id}}" class="btn btn-danger mx-1" id = '{{list.id}}'>Delete</a>
