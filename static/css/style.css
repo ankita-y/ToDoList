@@ -1,0 +1,65 @@
+
+.bkgimg{
+    background-image: url("/static/bkgimg.jpg");
+    background-size: cover;
+   }
+#formstyle{
+     display: none;
+     width: 500px;
+     background-color:black;
+     border: 2px solid white;
+     padding: 20px 50px;
+     margin-top: 30px;
+     -webkit-box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
+     -moz-box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
+     box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
+     
+     
+    }
+    #log{
+        border: 2px solid white;
+        padding: 60px 40px;
+        margin-top: 80px;
+        -webkit-box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
+        box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
+      }
+/* #loginModal{
+    display: none;
+    width: 500px;
+    background-color:black;
+    border: 2px solid white;
+    padding: 20px 50px;
+    margin-top: 30px;    
+    } */
+#signup{
+    border: 2px solid white;
+    background-color:black;
+    padding: 60px 40px;
+    margin-top: 40px;
+    }
+.AddButton{
+     width: 500px;  
+     text-align: center;
+     margin:auto;
+     display:block;
+    }
+.tcenter{
+    text-align: center;
+}
+.btn{
+    text-align: center;
+    margin:auto;
+    display:block;
+}
+.buttonCancel{
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

@@ -26,10 +26,10 @@
           -webkit-box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
           -moz-box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
           box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
-          
+
           
         }
-        .btn-success{
+        .AddButton{
           width: 500px;  
           text-align: center;
           margin:auto;
@@ -41,25 +41,27 @@
   <body class="bkgimg">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">ToDoList</a>
+          <a class="navbar-brand" href="{% url 'login' %}">ToDoList</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Home</a>
               </li>                           
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+            <form class="d-flex" method="GET">
+              <input class="form-control me-2" type="search" placeholder="Search" name="search_area" aria-label="Search">
+              <button class="btn btn-success mx-1" type="submit">Search</button>
             </form>
+            <a type="button" class="btn btn-success mx-1" href="{% url 'logout' %}">Logout</a>
           </div>
         </div>
       </nav>
     <div class="container my-3">    
-      <button onclick="myFunction()" type="button" class="btn btn-success">Add Task to the List</button>
+      <button onclick="myFunction()" type="button" class="btn btn-success AddButton">Add Task to the List</button>
+      <h4>Welcome {{ request.user }}</h4>
       <div class="container-fluid" id="formstyle">  
         <form method="POST" class="post-form">
           {% csrf_token %}
@@ -72,27 +74,22 @@
         <div class="row">
         {% for list in task %}
         <div class="col-xs-3 col-sm-3 col-md-3 my-2">
-          <div class="card text-white bg-dark" style="width: 18rem;">
-            <div class="card-body">
+          <div class="card bg-dark" style="width: 18rem;">
+            <div class="card-body text-white">
               <h6 class="card-title">{{list.title}}</h6>
               <p class="card-text">{{list.desc}}</p>
               <p class="card-text"><small class="text-muted">{{list.created}}</small></p>
               <a href="{% url 'update' list.id %}" class="btn btn-primary">Edit</a>
-              <!-- <a href="{% url 'delete' list.id %}" class="btn btn-primary">Delete</a> -->
-              <a href="delete/{{list.id}}" class="btn btn-danger mx-1" id = '{{list.id}}'>Delete</a>
+              <a href="{% url 'delete' list.id %}" class="btn btn-danger mx-1">Delete</a><br>
+    
+              <!-- Log In Modal -->
+              <!-- <a href="delete/{{list.id}}" class="btn btn-danger mx-1" id = '{{list.id}}'>Delete</a> -->
             </div>
           </div>
         </div>
         {% endfor %} 
       </div>
       </div>
-        <!-- <div>
-          {% for list in task %}
-          <p>{{list.title}}</p>
-          <a href="{% url 'update' list.id %}">Edit</a>
-          <a href="{% url 'delete' list.id %}">Delete</a>
-          {% endfor %}  
-        </div> -->
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
     <script>

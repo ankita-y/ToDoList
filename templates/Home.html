@@ -1,0 +1,67 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src= 
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"> 
+    </script> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>ToDoList</title>
+  </head>
+  <body class="bkgimg">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'login' %}">ToDoList</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Home</a>
+              </li>                           
+            </ul>
+          </div>
+          <!--Log In Button trigger modal -->
+            <a href="{% url 'login' %}" type="button" class="btn-success btn-block btn mx-1">Login</a>
+            <a href="{% url 'signUp' %}" type="button" class="btn-success btn-block btn mx-1">SignUp</a>
+        </div>
+      </nav>
+      <!-- Login Form -->
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <form id="signup" method="POST" class="post-form text-white">
+                    <div>
+                        <h3 class="tcenter">Login</h3> <br>
+                        <!-- <button type="button" class="btn-close text-white" aria-label="Close"></button> -->
+                    </div>
+                    {% csrf_token %}
+                    {% for fm in form %}
+                        {{ fm.label_tag}} {{ fm}} {{ fm.errors|striptags }} <br><br>
+                    {% endfor %}
+                    <input class="btn-success" type="submit" name="login" value="Login"> <br>
+                    <label for="test">Create Account </label>
+                    <a href="{% url 'signUp' %}">SignUp</a>
+                    {% if form.non_field_errors %}
+                      {% for error in form.non_field_errors %}
+                      <p class = "err">{{error}}</p>
+                      {% endfor %}
+                    {% endif %}
+                </form>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        </div>
+        </div>
+      <!-- Loginform end-->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>
