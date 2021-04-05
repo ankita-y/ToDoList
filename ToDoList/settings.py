@@ -27,7 +27,7 @@ SECRET_KEY = 'ip(vw%qx45c$5!7f5i^@*0gk7%t41)dj1$xr#87tu#)jw%qu6*'
 DEBUG = True
 
 #ALLOWED_HOSTS = ["todolist1106.herokuapp.com","local host"]
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*]
 
 
 # Application definition
