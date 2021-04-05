@@ -59,14 +59,14 @@ def handleSignUp(request):
         if form.is_valid():
             form.save()
             messages.success(request,'Account created successfully')
-            return redirect('/login/')
+            return redirect('/')
     else:
         form = Sign_Up()
     return render(request,'signup.html',{'form':form})
 
 def handle_logout(request):
     logout(request)
-    return HttpResponseRedirect('/login/')
+    return HttpResponseRedirect('/')
 
 
 def updateList(request,pkid):

@@ -21,7 +21,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.home_page,name='login'),
+    path('', views.home_page,name='login'),
     path('addtask/', views.addtask,name='addtask'),
     path('update/<str:pkid>/', views.updateList,name='update'),
     path('delete/<str:pkid>/', views.deleteList,name='delete'),
